@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "ResultTest";
+    Layout = "~/Views/_Layout.cshtml";
+}
+@{ Html.RenderPartial("head");}
+<section class="row">
+    @{ Html.RenderPartial("section");}
+
+    <style>
+        .edge {
+            min-height: -webkit-fill-available;
+        }
+    </style>
+    <div class="col-6">
+        <div class="w-100 edge" style="background-color: #e8eeee; float: right; display: inline-block; ">
+            <div style="margin-left: 10px; margin-right:10px;">
+                <h6 class="col-10" style="margin-top: 10px; margin-bottom: 3px; display:inline-block">Что подойдет тебе больше всего?</h6>
+                <input type="image" src="../plus.png" class="col-1 btn" value="">
+                <hr>
+
+
+                    <div class="col-8 offset-2">
+                        <div class="w-100 test-text">
+                            <p>Вопрос 1</p>
+                            <h6 class="test-h6">Работа, связанная с учетом и контролем, – это довольно скучно.</h6>
+                            
+                        </div>
+                    </div>
+  
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-2">
+        <div class="w-100" style="background: #e8eeee; border-radius: 3px; padding-left: 2px; ">
+            <div class="w-100 border-shadow"><p style="font-size: 0.85em;">Напоминание: сегодня пройдет мероприятие, которое надо постетить!</p></div>
+            <p style="font-size: 0.85em;">Напоминание: сегодня пройдет мероприятие, которое надо постетить!</p>
+            <p style="font-size: 0.85em;">Напоминание: сегодня пройдет мероприятие, которое надо постетить!</p>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,59 @@
+﻿
+<!DOCTYPE html>
+<!-- saved from url=(0046)file:///C:/Users/lenan/Desktop/boot/boot.html# -->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@ViewBag.Title</title>
+    <!--<link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="./css/index.css">
+
+    <script src="bootstrap/js/jquery-3.2.1.js"></script>
+    <script src="dist/js/popper.min.js"></script>
+    <script src="dist/js/bootstrap.js"></script>
+    <script src="js/global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script> -->
+
+    @Styles.Render("~/Content/bootstrap.css")
+    @Styles.Render("~/Content/index.css")
+    @Scripts.Render("~/Scripts/forajax.js")
+
+    @Scripts.Render("~/Scripts/jquery-3.2.1.js")
+
+    @Scripts.Render("~/Scripts/jquery.signalR-2.2.3.js")
+    @Scripts.Render("~/signalr/hubs")
+
+    @Scripts.Render("~/Scripts/dist/js/popper.min.js")
+    @Scripts.Render("~/Scripts/dist/js/bootstrap.js")
+    @Scripts.Render("~/Scripts/global.js")
+    @Scripts.Render("~/Scripts/js-cookie/js.cookie-2.2.0.min.js")
+    @*@Scripts.Url(@"https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js")*@
+    @*<script src="@Url.Content("~/Scripts/global.js")" type="text/javascript"></script>*@
+
+    <script src="@Url.Content("https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js")" type="text/javascript"></script>
+
+    @Scripts.Render("~/Scripts/chat.js")
+
+
+    @* @Scripts.Render("~/Scripts/global.js")
+        @Scripts.Url("https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js")
+               https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js
+               @Scripts.Render("~/Scripts/esm/popper.min.js")
+               @Scripts.Render("~/Scripts/umd/popper.min.js")
+               @Scripts.Render("~/Scripts/bootstrap.js")*@
+    @*@Scripts.Render("https://code.jquery.com/jquery-3.1.1.slim.min.js")
+        @Scripts.Render("https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js")
+        @Scripts.Render("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js")*@
+
+
+</head>
+<body>
+ @RenderBody()
+</body>
+</html>

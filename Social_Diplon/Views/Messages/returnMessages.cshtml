@@ -1,0 +1,33 @@
+﻿@using Social_Diplon.Models;
+@foreach (var i in (ViewBag.Mehh as List<ReturnMessages>))
+{
+    if (i.userId != ViewBag.IId)
+    {
+        @*чужой*@
+        <div class="w-100">
+            <div class="message-his w-100 d-inline-block">
+                <p class="margin-bottom-none message-his-color">
+                    @i.Text
+                </p>
+            </div>
+            <p class="date-time">
+                @i.time
+            </p>
+        </div>
+    }
+    else
+    {
+        @*свои*@
+        <div class="w-100">
+            <div class="message-my w-100 d-inline-block">
+                <p class="margin-bottom-none message-my-color">
+                    @i.Text
+                </p>
+            </div>
+            <p class="date-time message-my">
+                @i.time
+            </p>
+        </div>
+    }
+}
+        <div id="SelectedChat" data-selectedChat="@ViewBag.OtherId"></div>

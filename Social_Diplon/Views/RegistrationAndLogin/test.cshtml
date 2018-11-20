@@ -1,0 +1,43 @@
+﻿@using Social_Diplon.Models;
+@model List <user_close_information>
+
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>test</title>
+</head>
+<body>
+    <div>
+
+        <script src="~/Scripts/chat.js"></script>
+        <input type="text" id="chat" />
+        <input type="submit" id="sub" />
+
+        @foreach (user_close_information u in Model)
+            {
+                <p>@u.id  @u.user_login @u.user_pasword </p>
+        }
+        @*@using (db_a3cf84_akkara2Entities db = new db_a3cf84_akkara2Entities()) //выборка пользователей из беседы
+        {
+            var c = new db_a3cf84_akkara2Entities().talk.Where(x => x.id == 2).ToList();
+            foreach (var i in c)
+            {
+                foreach(var z in i.user_open_information)
+                {
+                    <p> @z.id</p>
+                }
+            }
+
+        }*@
+        
+    </div>
+    </body>
+</html>

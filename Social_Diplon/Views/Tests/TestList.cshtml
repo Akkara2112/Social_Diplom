@@ -1,0 +1,582 @@
+﻿
+@{
+    ViewBag.Title = "TestList";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+@{ Html.RenderPartial("head");}
+<section class="row">
+    @{ Html.RenderPartial("section");}
+    
+    <style>
+        .edge {
+            min-height: -webkit-fill-available;
+        }
+    </style>
+    <div class="col-6">
+        <div class="w-100 edge" style="background-color: #e8eeee; float: right; display: inline-block; ">
+            <div style="margin-left: 10px; margin-right:10px;">
+                <h6 class="col-10" style="margin-top: 10px; margin-bottom: 3px; display:inline-block">Что подойдет тебе больше всего?</h6>
+                <input type="image" src="../plus.png" class="col-1 btn" value="">
+                <hr>
+                @using (Html.BeginForm("Consider", "Tests", FormMethod.Post))
+                {
+
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 1</p>
+                        <h6 class="test-h6">Работа, связанная с учетом и контролем, – это довольно скучно.</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios1" id="optionsRadios1" value="0" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios1" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios1" id="optionsRadios1" value="2">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 2</p>
+                        <h6 class="test-h6">Я предпочту заниматься финансовыми операциями, а не, например, музыкой.</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios2" id="optionsRadios1" value="2" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios2" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios2" id="optionsRadios1" value="0">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 3</p>
+                        <h6 class="test-h6">Невозможно точно рассчитать, сколько времени уйдет на дорогу до работы, по крайней мере, мне.</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios3" id="optionsRadios1" value="0" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios3" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios3" id="optionsRadios1" value="2">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 4</p>
+                        <h6 class="test-h6">Я часто рискую.</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios4" id="optionsRadios1" value="0" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios4" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios4" id="optionsRadios1" value="2">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 5</p>
+                        <h6 class="test-h6">Меня раздражает беспорядок.</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios5" id="optionsRadios1" value="2" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios5" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios5" id="optionsRadios1" value="0">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 6</p>
+                        <h6 class="test-h6">Я охотно почитал(а) бы на досуге о последних достижениях в различных областях науки.</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios6" id="optionsRadios1" value="2" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios6" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios6" id="optionsRadios1" value="0">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 7</p>
+                        <h6 class="test-h6">Записи, которые я делаю, не очень хорошо структурированы и организованы.</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios7" id="optionsRadios1" value="0" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios7" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios7" id="optionsRadios1" value="2">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 8</p>
+                        <h6 class="test-h6">Я предпочитаю разумно распределять деньги, а не тратить все сразу.</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios8" id="optionsRadios1" value="2" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios8" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios8" id="optionsRadios1" value="0">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 9</p>
+                        <h6 class="test-h6">У меня наблюдается, скорее, рабочий беспорядок на столе, чем расположение вещей по аккуратным «стопочкам».</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios9" id="optionsRadios1" value="0" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios9" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios9" id="optionsRadios1" value="2">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 10</p>
+                        <h6 class="test-h6">Меня привлекает работа, где необходимо действовать согласно инструкции или четко заданному алгоритму.</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios10" id="optionsRadios1" value="2" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios10" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios10" id="optionsRadios1" value="0">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 11</p>
+                        <h6 class="test-h6">Если бы я что-то собирал(а), я бы постарался(ась) привести в порядок коллекцию, все разложить по папочкам и полочкам.</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios11" id="optionsRadios1" value="2" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios11" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios11" id="optionsRadios1" value="0">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 12</p>
+                        <h6 class="test-h6">Терпеть не могу наводить порядок и систематизировать что бы то ни было.</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios12" id="optionsRadios1" value="0" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios12" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios12" id="optionsRadios1" value="2">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 13</p>
+                        <h6 class="test-h6">Мне нравится работать на компьютере – оформлять или просто набирать тексты, производить расчеты.</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios13" id="optionsRadios1" value="2" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios13" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios13" id="optionsRadios1" value="0">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 14</p>
+                        <h6 class="test-h6">Прежде чем действовать, надо продумать все детали..</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios14" id="optionsRadios1" value="2" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios14" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios14" id="optionsRadios1" value="0">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 15</p>
+                        <h6 class="test-h6">На мой взгляд, графики и таблицы – очень удобный и информативный способ предоставления информации.</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios15" id="optionsRadios1" value="2" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios15" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios15" id="optionsRadios1" value="0">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 16</p>
+                        <h6 class="test-h6">Мне нравятся игры, в которых я могу точно рассчитать шансы на успех и сделать осторожный, но точный ход.</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios16" id="optionsRadios1" value="2" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios16" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios16" id="optionsRadios1" value="0">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 17</p>
+                        <h6 class="test-h6">При изучении иностранного языка я предпочитаю начинать с грамматики, а не получать разговорный опыт без знания грамматических основ.</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios17" id="optionsRadios1" value="2" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios17" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios17" id="optionsRadios1" value="0">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 18</p>
+                        <h6 class="test-h6">Сталкиваясь с какой-либо проблемой, я пытаюсь всесторонне ее изучить (ознакомиться с соответствующей литературой, поискать нужную информацию в интернете, поговорить со специалистами)..</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios18" id="optionsRadios1" value="2" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios18" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios18" id="optionsRadios1" value="0">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 19</p>
+                        <h6 class="test-h6">Если я выражаю свои мысли на бумаге, мне важнее....</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios19" id="optionsRadios1" value="2" checked>
+                            Логичность текста
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios19" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios19" id="optionsRadios1" value="0">
+                            Образность изложения
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 20</p>
+                        <h6 class="test-h6">У меня есть ежедневник, в который я записываю важную информацию на несколько дней вперед.</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios20" id="optionsRadios1" value="2" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios20" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios20" id="optionsRadios1" value="0">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 21</p>
+                        <h6 class="test-h6">Я с удовольствием смотрю новости политики и экономики.</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios21" id="optionsRadios1" value="2" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios21" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios21" id="optionsRadios1" value="0">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 22</p>
+                        <h6 class="test-h6">Я бы хотел(а), чтобы моя будущая профессия.</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios22" id="optionsRadios1" value="0" checked>
+                            Обеспечивала меня нужной порцией адреналина
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios22" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios22" id="optionsRadios1" value="2">
+                            Давала бы ощещение спокойствия и надежности
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 23</p>
+                        <h6 class="test-h6">Я доделываю работу в последний момент.</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios23" id="optionsRadios1" value="0" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios23" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios23" id="optionsRadios1" value="2">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 24</p>
+                        <h6 class="test-h6">Взяв книгу, я всегда ставлю ее на место.</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios24" id="optionsRadios1" value="2" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios24" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios24" id="optionsRadios1" value="0">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 25</p>
+                        <h6 class="test-h6">Когда я ложусь спать, то уже наверняка знаю, что буду делать завтра.</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios25" id="optionsRadios1" value="2" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios25" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios25" id="optionsRadios1" value="0">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 26</p>
+                        <h6 class="test-h6">В своих словах и поступках я следую пословице «Семь раз отмерь, один – отрежь».</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios26" id="optionsRadios1" value="2" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios26" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios26" id="optionsRadios1" value="0">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 27</p>
+                        <h6 class="test-h6">Перед ответственными делами я всегда составляю план их выполнения.</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios27" id="optionsRadios1" value="2" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios27" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios27" id="optionsRadios1" value="0">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 28</p>
+                        <h6 class="test-h6">После вечеринки мытье посуды я откладываю до утра.</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios28" id="optionsRadios1" value="0" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios28" id="optionsRadios1" value="1">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios28" id="optionsRadios1" value="2">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 29</p>
+                        <h6 class="test-h6">Я серьезно отношусь к своему здоровью.</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios29" id="optionsRadios1" value="0" checked>
+                            Да
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios29" id="optionsRadios1" value="0">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios29" id="optionsRadios1" value="0">
+                            Нет
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8 offset-2">
+                    <div class="w-100 test-text">
+                        <p>Вопрос 30</p>
+                        <h6 class="test-h6">Когда у меня что-то не получается, я....</h6>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios30" id="optionsRadios1" value="0" checked>
+                            Терпеливо стараюсь найти решение
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios30" id="optionsRadios1" value="0">
+                            Затрудняюсь ответить
+                        </label>
+                        <label class="form-check-label w-100 test-radio">
+                            <input type="radio" class="form-check-input" name="optionsRadios30" id="optionsRadios1" value="0">
+                            Начинаю нервничать и злиться
+                        </label>
+                    </div>
+                </div>
+
+                        <input type="submit" class="col-3 offset-9 btn btn-info" value="Далее">
+
+                }
+                    </div>
+                </div>
+            </div>
+
+
+    <div class="col-2">
+        <div class="w-100" style="background: #e8eeee; border-radius: 3px; padding-left: 2px; ">
+            <div class="w-100 border-shadow"><p style="font-size: 0.85em;">Напоминание: сегодня пройдет мероприятие, которое надо постетить!</p></div>
+            <p style="font-size: 0.85em;">Напоминание: сегодня пройдет мероприятие, которое надо постетить!</p>
+            <p style="font-size: 0.85em;">Напоминание: сегодня пройдет мероприятие, которое надо постетить!</p>
+
+        </div>
+    </div>
+</section>

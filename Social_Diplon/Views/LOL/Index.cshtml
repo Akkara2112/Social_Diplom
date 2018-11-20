@@ -1,0 +1,15 @@
+﻿@{ 
+    Layout = "~/Views/_Layout.cshtml";
+
+    List<Social_Diplon.Models.user_close_information> info = ViewBag.Users;
+}
+
+@foreach (var u in info)
+{
+    <div>
+        @u.id
+    </div>
+}
+
+
+

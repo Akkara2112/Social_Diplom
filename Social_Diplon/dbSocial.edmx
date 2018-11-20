@@ -1,0 +1,1501 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище a39b85_diplom" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_of" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "def.db_a3cf84_akkara2.complete_task" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="complete_task">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="task_id" />
+            <PropertyRef Name="time_of_complete" />
+          </Key>
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="task_id" Type="int" Nullable="false" />
+          <Property Name="time_of_complete" Type="varchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "def.db_a3cf84_akkara2.contact_information" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="contact_information">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="contact_type_id" />
+            <PropertyRef Name="information" />
+          </Key>
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="contact_type_id" Type="int" Nullable="false" />
+          <Property Name="information" Type="varchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="contact_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_of" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "def.db_a3cf84_akkara2.friend_list" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="friend_list">
+          <Key>
+            <PropertyRef Name="I_user_id" />
+            <PropertyRef Name="friend_user_id" />
+          </Key>
+          <Property Name="I_user_id" Type="int" Nullable="false" />
+          <Property Name="friend_user_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="group_post">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="photo_path" Type="varchar" MaxLength="100" />
+          <Property Name="group_id" Type="int" Nullable="false" />
+          <Property Name="date_of_creation" Type="varchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="group_post_сomment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="group_post_id" Type="int" Nullable="false" />
+          <Property Name="user_text" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="sending_time" Type="varchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="group_status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_of" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="groups">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_of" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="about_group" Type="varchar" MaxLength="500" />
+          <Property Name="group_status_id" Type="int" Nullable="false" />
+          <Property Name="date_of_creation" Type="varchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="message">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="talk_id" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="user_text" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="sending_time" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="message_status_id" Type="int" />
+        </EntityType>
+        <EntityType Name="message_status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_of" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="profession">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_of" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sex">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_of" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="talk">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date_of_creation" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="name_of" Type="varchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="task">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="profession_id" Type="int" Nullable="false" />
+          <Property Name="task_path" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_close_information">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_login" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="user_pasword" Type="varchar" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "def.db_a3cf84_akkara2.user_in_talk" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="user_in_talk">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="talk_id" />
+          </Key>
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="talk_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_open_information">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="sex_id" Type="int" Nullable="false" />
+          <Property Name="about_youself" Type="varchar" MaxLength="500" />
+          <Property Name="profession_id" Type="int" Nullable="false" />
+          <Property Name="rating" Type="int" Nullable="false" />
+          <Property Name="user_status_id" Type="int" Nullable="false" />
+          <Property Name="city_id" Type="int" />
+          <Property Name="avatar_path" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="user_quote" Type="varchar" MaxLength="32" />
+          <Property Name="date_of_birth" Type="date" />
+          <Property Name="first_name" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="last_name" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="patronymic" Type="varchar" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="user_post">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="photo_path" Type="varchar" MaxLength="100" />
+          <Property Name="date_of_creation" Type="varchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_post_сomment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="user_post_id" Type="int" Nullable="false" />
+          <Property Name="user_text" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="sending_time" Type="varchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_of" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "def.db_a3cf84_akkara2.users_in_group" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="users_in_group">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="group_id" />
+          </Key>
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="group_id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="complete_task_ibfk_1">
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="1" />
+          <End Role="complete_task" Type="Self.complete_task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_open_information">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="complete_task">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="complete_task_ibfk_2">
+          <End Role="task" Type="Self.task" Multiplicity="1" />
+          <End Role="complete_task" Type="Self.complete_task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="task">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="complete_task">
+              <PropertyRef Name="task_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="contact_information_ibfk_1">
+          <End Role="contact_type" Type="Self.contact_type" Multiplicity="1" />
+          <End Role="contact_information" Type="Self.contact_information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contact_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="contact_information">
+              <PropertyRef Name="contact_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="contact_information_ibfk_2">
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="1" />
+          <End Role="contact_information" Type="Self.contact_information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_open_information">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="contact_information">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="friend_list_ibfk_1">
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="1" />
+          <End Role="friend_list" Type="Self.friend_list" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_open_information">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="friend_list">
+              <PropertyRef Name="I_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="friend_list_ibfk_2">
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="1" />
+          <End Role="friend_list" Type="Self.friend_list" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_open_information">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="friend_list">
+              <PropertyRef Name="friend_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="group_post_ibfk_1">
+          <End Role="groups" Type="Self.groups" Multiplicity="1" />
+          <End Role="group_post" Type="Self.group_post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="group_post">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="group_post_сomment_ibfk_1">
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="1" />
+          <End Role="group_post_сomment" Type="Self.group_post_сomment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_open_information">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="group_post_сomment">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="group_post_сomment_ibfk_2">
+          <End Role="group_post" Type="Self.group_post" Multiplicity="1" />
+          <End Role="group_post_сomment" Type="Self.group_post_сomment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="group_post">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="group_post_сomment">
+              <PropertyRef Name="group_post_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="groups_ibfk_1">
+          <End Role="group_status" Type="Self.group_status" Multiplicity="1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="group_status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="group_status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="message_ibfk_1">
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="1" />
+          <End Role="message" Type="Self.message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_open_information">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="message">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="message_ibfk_2">
+          <End Role="talk" Type="Self.talk" Multiplicity="1" />
+          <End Role="message" Type="Self.message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="talk">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="message">
+              <PropertyRef Name="talk_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="message_ibfk_3">
+          <End Role="message_status" Type="Self.message_status" Multiplicity="0..1" />
+          <End Role="message" Type="Self.message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="message_status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="message">
+              <PropertyRef Name="message_status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="task_ibfk_1">
+          <End Role="profession" Type="Self.profession" Multiplicity="1" />
+          <End Role="task" Type="Self.task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profession">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="task">
+              <PropertyRef Name="profession_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_in_talk_ibfk_1">
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="1" />
+          <End Role="user_in_talk" Type="Self.user_in_talk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_open_information">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_in_talk">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_in_talk_ibfk_2">
+          <End Role="talk" Type="Self.talk" Multiplicity="1" />
+          <End Role="user_in_talk" Type="Self.user_in_talk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="talk">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_in_talk">
+              <PropertyRef Name="talk_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_open_information_ibfk_1">
+          <End Role="sex" Type="Self.sex" Multiplicity="1" />
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sex">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_open_information">
+              <PropertyRef Name="sex_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_open_information_ibfk_2">
+          <End Role="user_close_information" Type="Self.user_close_information" Multiplicity="1" />
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="user_close_information">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_open_information">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_open_information_ibfk_3">
+          <End Role="profession" Type="Self.profession" Multiplicity="1" />
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profession">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_open_information">
+              <PropertyRef Name="profession_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_open_information_ibfk_4">
+          <End Role="user_status" Type="Self.user_status" Multiplicity="1" />
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_open_information">
+              <PropertyRef Name="user_status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_open_information_ibfk_5">
+          <End Role="city" Type="Self.city" Multiplicity="0..1" />
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_open_information">
+              <PropertyRef Name="city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_post_ibfk_1">
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="1" />
+          <End Role="user_post" Type="Self.user_post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_open_information">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_post">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_post_сomment_ibfk_1">
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="1" />
+          <End Role="user_post_сomment" Type="Self.user_post_сomment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_open_information">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_post_сomment">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_post_сomment_ibfk_2">
+          <End Role="user_post" Type="Self.user_post" Multiplicity="1" />
+          <End Role="user_post_сomment" Type="Self.user_post_сomment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_post">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_post_сomment">
+              <PropertyRef Name="user_post_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="users_in_group_ibfk_1">
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="1" />
+          <End Role="users_in_group" Type="Self.users_in_group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_open_information">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="users_in_group">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="users_in_group_ibfk_2">
+          <End Role="groups" Type="Self.groups" Multiplicity="1" />
+          <End Role="users_in_group" Type="Self.users_in_group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="users_in_group">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище a39b85_diplomContainer">
+          <EntitySet Name="city" EntityType="Self.city" Schema="db_a3cf84_akkara2" store:Type="Tables" />
+          <EntitySet Name="contact_type" EntityType="Self.contact_type" Schema="db_a3cf84_akkara2" store:Type="Tables" />
+          <EntitySet Name="group_post" EntityType="Self.group_post" Schema="db_a3cf84_akkara2" store:Type="Tables" />
+          <EntitySet Name="group_post_сomment" EntityType="Self.group_post_сomment" Schema="db_a3cf84_akkara2" store:Type="Tables" />
+          <EntitySet Name="group_status" EntityType="Self.group_status" Schema="db_a3cf84_akkara2" store:Type="Tables" />
+          <EntitySet Name="groups" EntityType="Self.groups" Schema="db_a3cf84_akkara2" store:Type="Tables" />
+          <EntitySet Name="message" EntityType="Self.message" Schema="db_a3cf84_akkara2" store:Type="Tables" />
+          <EntitySet Name="message_status" EntityType="Self.message_status" Schema="db_a3cf84_akkara2" store:Type="Tables" />
+          <EntitySet Name="profession" EntityType="Self.profession" Schema="db_a3cf84_akkara2" store:Type="Tables" />
+          <EntitySet Name="sex" EntityType="Self.sex" Schema="db_a3cf84_akkara2" store:Type="Tables" />
+          <EntitySet Name="talk" EntityType="Self.talk" Schema="db_a3cf84_akkara2" store:Type="Tables" />
+          <EntitySet Name="task" EntityType="Self.task" Schema="db_a3cf84_akkara2" store:Type="Tables" />
+          <EntitySet Name="user_close_information" EntityType="Self.user_close_information" Schema="db_a3cf84_akkara2" store:Type="Tables" />
+          <EntitySet Name="user_open_information" EntityType="Self.user_open_information" Schema="db_a3cf84_akkara2" store:Type="Tables" />
+          <EntitySet Name="user_post" EntityType="Self.user_post" Schema="db_a3cf84_akkara2" store:Type="Tables" />
+          <EntitySet Name="user_post_сomment" EntityType="Self.user_post_сomment" Schema="db_a3cf84_akkara2" store:Type="Tables" />
+          <EntitySet Name="user_status" EntityType="Self.user_status" Schema="db_a3cf84_akkara2" store:Type="Tables" />
+          <EntitySet Name="complete_task" EntityType="Self.complete_task" store:Type="Tables" store:Schema="db_a3cf84_akkara2">
+            <DefiningQuery>SELECT
+`complete_task`.`user_id`, 
+`complete_task`.`task_id`, 
+`complete_task`.`time_of_complete`
+FROM `complete_task` AS `complete_task`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="contact_information" EntityType="Self.contact_information" store:Type="Tables" store:Schema="db_a3cf84_akkara2">
+            <DefiningQuery>SELECT
+`contact_information`.`user_id`, 
+`contact_information`.`contact_type_id`, 
+`contact_information`.`information`
+FROM `contact_information` AS `contact_information`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="friend_list" EntityType="Self.friend_list" store:Type="Tables" store:Schema="db_a3cf84_akkara2">
+          </EntitySet>
+          <EntitySet Name="user_in_talk" EntityType="Self.user_in_talk" store:Type="Tables" store:Schema="db_a3cf84_akkara2">
+          </EntitySet>
+          <EntitySet Name="users_in_group" EntityType="Self.users_in_group" store:Type="Tables" store:Schema="db_a3cf84_akkara2">
+            <DefiningQuery>SELECT
+`users_in_group`.`user_id`, 
+`users_in_group`.`group_id`
+FROM `users_in_group` AS `users_in_group`</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="complete_task_ibfk_1" Association="Self.complete_task_ibfk_1">
+            <End Role="user_open_information" EntitySet="user_open_information" />
+            <End Role="complete_task" EntitySet="complete_task" />
+          </AssociationSet>
+          <AssociationSet Name="complete_task_ibfk_2" Association="Self.complete_task_ibfk_2">
+            <End Role="task" EntitySet="task" />
+            <End Role="complete_task" EntitySet="complete_task" />
+          </AssociationSet>
+          <AssociationSet Name="contact_information_ibfk_1" Association="Self.contact_information_ibfk_1">
+            <End Role="contact_type" EntitySet="contact_type" />
+            <End Role="contact_information" EntitySet="contact_information" />
+          </AssociationSet>
+          <AssociationSet Name="contact_information_ibfk_2" Association="Self.contact_information_ibfk_2">
+            <End Role="user_open_information" EntitySet="user_open_information" />
+            <End Role="contact_information" EntitySet="contact_information" />
+          </AssociationSet>
+          <AssociationSet Name="friend_list_ibfk_1" Association="Self.friend_list_ibfk_1">
+            <End Role="user_open_information" EntitySet="user_open_information" />
+            <End Role="friend_list" EntitySet="friend_list" />
+          </AssociationSet>
+          <AssociationSet Name="friend_list_ibfk_2" Association="Self.friend_list_ibfk_2">
+            <End Role="user_open_information" EntitySet="user_open_information" />
+            <End Role="friend_list" EntitySet="friend_list" />
+          </AssociationSet>
+          <AssociationSet Name="group_post_ibfk_1" Association="Self.group_post_ibfk_1">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="group_post" EntitySet="group_post" />
+          </AssociationSet>
+          <AssociationSet Name="group_post_сomment_ibfk_1" Association="Self.group_post_сomment_ibfk_1">
+            <End Role="user_open_information" EntitySet="user_open_information" />
+            <End Role="group_post_сomment" EntitySet="group_post_сomment" />
+          </AssociationSet>
+          <AssociationSet Name="group_post_сomment_ibfk_2" Association="Self.group_post_сomment_ibfk_2">
+            <End Role="group_post" EntitySet="group_post" />
+            <End Role="group_post_сomment" EntitySet="group_post_сomment" />
+          </AssociationSet>
+          <AssociationSet Name="groups_ibfk_1" Association="Self.groups_ibfk_1">
+            <End Role="group_status" EntitySet="group_status" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="message_ibfk_1" Association="Self.message_ibfk_1">
+            <End Role="user_open_information" EntitySet="user_open_information" />
+            <End Role="message" EntitySet="message" />
+          </AssociationSet>
+          <AssociationSet Name="message_ibfk_2" Association="Self.message_ibfk_2">
+            <End Role="talk" EntitySet="talk" />
+            <End Role="message" EntitySet="message" />
+          </AssociationSet>
+          <AssociationSet Name="message_ibfk_3" Association="Self.message_ibfk_3">
+            <End Role="message_status" EntitySet="message_status" />
+            <End Role="message" EntitySet="message" />
+          </AssociationSet>
+          <AssociationSet Name="task_ibfk_1" Association="Self.task_ibfk_1">
+            <End Role="profession" EntitySet="profession" />
+            <End Role="task" EntitySet="task" />
+          </AssociationSet>
+          <AssociationSet Name="user_in_talk_ibfk_1" Association="Self.user_in_talk_ibfk_1">
+            <End Role="user_open_information" EntitySet="user_open_information" />
+            <End Role="user_in_talk" EntitySet="user_in_talk" />
+          </AssociationSet>
+          <AssociationSet Name="user_in_talk_ibfk_2" Association="Self.user_in_talk_ibfk_2">
+            <End Role="talk" EntitySet="talk" />
+            <End Role="user_in_talk" EntitySet="user_in_talk" />
+          </AssociationSet>
+          <AssociationSet Name="user_open_information_ibfk_1" Association="Self.user_open_information_ibfk_1">
+            <End Role="sex" EntitySet="sex" />
+            <End Role="user_open_information" EntitySet="user_open_information" />
+          </AssociationSet>
+          <AssociationSet Name="user_open_information_ibfk_2" Association="Self.user_open_information_ibfk_2">
+            <End Role="user_close_information" EntitySet="user_close_information" />
+            <End Role="user_open_information" EntitySet="user_open_information" />
+          </AssociationSet>
+          <AssociationSet Name="user_open_information_ibfk_3" Association="Self.user_open_information_ibfk_3">
+            <End Role="profession" EntitySet="profession" />
+            <End Role="user_open_information" EntitySet="user_open_information" />
+          </AssociationSet>
+          <AssociationSet Name="user_open_information_ibfk_4" Association="Self.user_open_information_ibfk_4">
+            <End Role="user_status" EntitySet="user_status" />
+            <End Role="user_open_information" EntitySet="user_open_information" />
+          </AssociationSet>
+          <AssociationSet Name="user_open_information_ibfk_5" Association="Self.user_open_information_ibfk_5">
+            <End Role="city" EntitySet="city" />
+            <End Role="user_open_information" EntitySet="user_open_information" />
+          </AssociationSet>
+          <AssociationSet Name="user_post_ibfk_1" Association="Self.user_post_ibfk_1">
+            <End Role="user_open_information" EntitySet="user_open_information" />
+            <End Role="user_post" EntitySet="user_post" />
+          </AssociationSet>
+          <AssociationSet Name="user_post_сomment_ibfk_1" Association="Self.user_post_сomment_ibfk_1">
+            <End Role="user_open_information" EntitySet="user_open_information" />
+            <End Role="user_post_сomment" EntitySet="user_post_сomment" />
+          </AssociationSet>
+          <AssociationSet Name="user_post_сomment_ibfk_2" Association="Self.user_post_сomment_ibfk_2">
+            <End Role="user_post" EntitySet="user_post" />
+            <End Role="user_post_сomment" EntitySet="user_post_сomment" />
+          </AssociationSet>
+          <AssociationSet Name="users_in_group_ibfk_1" Association="Self.users_in_group_ibfk_1">
+            <End Role="user_open_information" EntitySet="user_open_information" />
+            <End Role="users_in_group" EntitySet="users_in_group" />
+          </AssociationSet>
+          <AssociationSet Name="users_in_group_ibfk_2" Association="Self.users_in_group_ibfk_2">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="users_in_group" EntitySet="users_in_group" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="a39b85_diplom" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_of" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="user_open_information" Relationship="Self.user_open_information_ibfk_5" FromRole="city" ToRole="user_open_information" />
+        </EntityType>
+        <EntityType Name="contact_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_of" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="contact_information" Relationship="Self.contact_information_ibfk_1" FromRole="contact_type" ToRole="contact_information" />
+        </EntityType>
+        <EntityType Name="group_post">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="photo_path" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="group_id" Type="Int32" Nullable="false" />
+          <Property Name="date_of_creation" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="groups" Relationship="Self.group_post_ibfk_1" FromRole="group_post" ToRole="groups" />
+          <NavigationProperty Name="group_post_сomment" Relationship="Self.group_post_сomment_ibfk_2" FromRole="group_post" ToRole="group_post_сomment" />
+        </EntityType>
+        <EntityType Name="group_post_сomment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="group_post_id" Type="Int32" Nullable="false" />
+          <Property Name="user_text" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sending_time" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="group_post" Relationship="Self.group_post_сomment_ibfk_2" FromRole="group_post_сomment" ToRole="group_post" />
+          <NavigationProperty Name="user_open_information" Relationship="Self.group_post_сomment_ibfk_1" FromRole="group_post_сomment" ToRole="user_open_information" />
+        </EntityType>
+        <EntityType Name="group_status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_of" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="groups" Relationship="Self.groups_ibfk_1" FromRole="group_status" ToRole="groups" />
+        </EntityType>
+        <EntityType Name="groups">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_of" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="about_group" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="group_status_id" Type="Int32" Nullable="false" />
+          <Property Name="date_of_creation" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="group_post" Relationship="Self.group_post_ibfk_1" FromRole="groups" ToRole="group_post" />
+          <NavigationProperty Name="group_status" Relationship="Self.groups_ibfk_1" FromRole="groups" ToRole="group_status" />
+          <NavigationProperty Name="user_open_information" Relationship="Self.users_in_group" FromRole="groups" ToRole="user_open_information" />
+        </EntityType>
+        <EntityType Name="message">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="talk_id" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="user_text" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sending_time" Type="DateTime" Nullable="false" />
+          <Property Name="message_status_id" Type="Int32" />
+          <NavigationProperty Name="user_open_information" Relationship="Self.message_ibfk_1" FromRole="message" ToRole="user_open_information" />
+          <NavigationProperty Name="talk" Relationship="Self.message_ibfk_2" FromRole="message" ToRole="talk" />
+          <NavigationProperty Name="message_status" Relationship="Self.message_ibfk_3" FromRole="message" ToRole="message_status" />
+        </EntityType>
+        <EntityType Name="message_status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_of" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="message" Relationship="Self.message_ibfk_3" FromRole="message_status" ToRole="message" />
+        </EntityType>
+        <EntityType Name="profession">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_of" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="task" Relationship="Self.task_ibfk_1" FromRole="profession" ToRole="task" />
+          <NavigationProperty Name="user_open_information" Relationship="Self.user_open_information_ibfk_3" FromRole="profession" ToRole="user_open_information" />
+        </EntityType>
+        <EntityType Name="sex">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_of" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="user_open_information" Relationship="Self.user_open_information_ibfk_1" FromRole="sex" ToRole="user_open_information" />
+        </EntityType>
+        <EntityType Name="talk">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date_of_creation" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name_of" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="message" Relationship="Self.message_ibfk_2" FromRole="talk" ToRole="message" />
+          <NavigationProperty Name="user_open_information" Relationship="Self.user_in_talk" FromRole="talk" ToRole="user_open_information" />
+        </EntityType>
+        <EntityType Name="task">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="profession_id" Type="Int32" Nullable="false" />
+          <Property Name="task_path" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="profession" Relationship="Self.task_ibfk_1" FromRole="task" ToRole="profession" />
+          <NavigationProperty Name="complete_task" Relationship="Self.complete_task_ibfk_2" FromRole="task" ToRole="complete_task" />
+        </EntityType>
+        <EntityType Name="user_close_information">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_login" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_pasword" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="user_open_information" Relationship="Self.user_open_information_ibfk_2" FromRole="user_close_information" ToRole="user_open_information" />
+        </EntityType>
+        <EntityType Name="user_open_information">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="sex_id" Type="Int32" Nullable="false" />
+          <Property Name="about_youself" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="profession_id" Type="Int32" Nullable="false" />
+          <Property Name="rating" Type="Int32" Nullable="false" />
+          <Property Name="user_status_id" Type="Int32" Nullable="false" />
+          <Property Name="city_id" Type="Int32" />
+          <Property Name="avatar_path" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_quote" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="date_of_birth" Type="DateTime" />
+          <Property Name="first_name" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="last_name" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="patronymic" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="city" Relationship="Self.user_open_information_ibfk_5" FromRole="user_open_information" ToRole="city" />
+          <NavigationProperty Name="group_post_сomment" Relationship="Self.group_post_сomment_ibfk_1" FromRole="user_open_information" ToRole="group_post_сomment" />
+          <NavigationProperty Name="message" Relationship="Self.message_ibfk_1" FromRole="user_open_information" ToRole="message" />
+          <NavigationProperty Name="profession" Relationship="Self.user_open_information_ibfk_3" FromRole="user_open_information" ToRole="profession" />
+          <NavigationProperty Name="sex" Relationship="Self.user_open_information_ibfk_1" FromRole="user_open_information" ToRole="sex" />
+          <NavigationProperty Name="user_close_information" Relationship="Self.user_open_information_ibfk_2" FromRole="user_open_information" ToRole="user_close_information" />
+          <NavigationProperty Name="complete_task" Relationship="Self.complete_task_ibfk_1" FromRole="user_open_information" ToRole="complete_task" />
+          <NavigationProperty Name="contact_information" Relationship="Self.contact_information_ibfk_2" FromRole="user_open_information" ToRole="contact_information" />
+          <NavigationProperty Name="user_status" Relationship="Self.user_open_information_ibfk_4" FromRole="user_open_information" ToRole="user_status" />
+          <NavigationProperty Name="user_post" Relationship="Self.user_post_ibfk_1" FromRole="user_open_information" ToRole="user_post" />
+          <NavigationProperty Name="user_post_сomment" Relationship="Self.user_post_сomment_ibfk_1" FromRole="user_open_information" ToRole="user_post_сomment" />
+          <NavigationProperty Name="user_open_information1" Relationship="Self.friend_list" FromRole="user_open_information" ToRole="user_open_information1" />
+          <NavigationProperty Name="user_open_information2" Relationship="Self.friend_list" FromRole="user_open_information1" ToRole="user_open_information" />
+          <NavigationProperty Name="talk" Relationship="Self.user_in_talk" FromRole="user_open_information" ToRole="talk" />
+          <NavigationProperty Name="groups" Relationship="Self.users_in_group" FromRole="user_open_information" ToRole="groups" />
+        </EntityType>
+        <EntityType Name="user_post">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="photo_path" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="date_of_creation" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="user_open_information" Relationship="Self.user_post_ibfk_1" FromRole="user_post" ToRole="user_open_information" />
+          <NavigationProperty Name="user_post_сomment" Relationship="Self.user_post_сomment_ibfk_2" FromRole="user_post" ToRole="user_post_сomment" />
+        </EntityType>
+        <EntityType Name="user_post_сomment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="user_post_id" Type="Int32" Nullable="false" />
+          <Property Name="user_text" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sending_time" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="user_open_information" Relationship="Self.user_post_сomment_ibfk_1" FromRole="user_post_сomment" ToRole="user_open_information" />
+          <NavigationProperty Name="user_post" Relationship="Self.user_post_сomment_ibfk_2" FromRole="user_post_сomment" ToRole="user_post" />
+        </EntityType>
+        <EntityType Name="user_status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_of" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="user_open_information" Relationship="Self.user_open_information_ibfk_4" FromRole="user_status" ToRole="user_open_information" />
+        </EntityType>
+        <EntityType Name="complete_task">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="task_id" />
+            <PropertyRef Name="time_of_complete" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="task_id" Type="Int32" Nullable="false" />
+          <Property Name="time_of_complete" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="task" Relationship="Self.complete_task_ibfk_2" FromRole="complete_task" ToRole="task" />
+          <NavigationProperty Name="user_open_information" Relationship="Self.complete_task_ibfk_1" FromRole="complete_task" ToRole="user_open_information" />
+        </EntityType>
+        <EntityType Name="contact_information">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="contact_type_id" />
+            <PropertyRef Name="information" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="contact_type_id" Type="Int32" Nullable="false" />
+          <Property Name="information" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="contact_type" Relationship="Self.contact_information_ibfk_1" FromRole="contact_information" ToRole="contact_type" />
+          <NavigationProperty Name="user_open_information" Relationship="Self.contact_information_ibfk_2" FromRole="contact_information" ToRole="user_open_information" />
+        </EntityType>
+        <Association Name="user_open_information_ibfk_5">
+          <End Role="city" Type="Self.city" Multiplicity="0..1" />
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_open_information">
+              <PropertyRef Name="city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="contact_information_ibfk_1">
+          <End Role="contact_type" Type="Self.contact_type" Multiplicity="1" />
+          <End Role="contact_information" Type="Self.contact_information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contact_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="contact_information">
+              <PropertyRef Name="contact_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="group_post_ibfk_1">
+          <End Role="groups" Type="Self.groups" Multiplicity="1" />
+          <End Role="group_post" Type="Self.group_post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="group_post">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="group_post_сomment_ibfk_2">
+          <End Role="group_post" Type="Self.group_post" Multiplicity="1" />
+          <End Role="group_post_сomment" Type="Self.group_post_сomment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="group_post">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="group_post_сomment">
+              <PropertyRef Name="group_post_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="group_post_сomment_ibfk_1">
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="1" />
+          <End Role="group_post_сomment" Type="Self.group_post_сomment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_open_information">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="group_post_сomment">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="groups_ibfk_1">
+          <End Role="group_status" Type="Self.group_status" Multiplicity="1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="group_status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="group_status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="message_ibfk_1">
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="1" />
+          <End Role="message" Type="Self.message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_open_information">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="message">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="message_ibfk_2">
+          <End Role="talk" Type="Self.talk" Multiplicity="1" />
+          <End Role="message" Type="Self.message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="talk">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="message">
+              <PropertyRef Name="talk_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="message_ibfk_3">
+          <End Role="message_status" Type="Self.message_status" Multiplicity="0..1" />
+          <End Role="message" Type="Self.message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="message_status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="message">
+              <PropertyRef Name="message_status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="task_ibfk_1">
+          <End Role="profession" Type="Self.profession" Multiplicity="1" />
+          <End Role="task" Type="Self.task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profession">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="task">
+              <PropertyRef Name="profession_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_open_information_ibfk_3">
+          <End Role="profession" Type="Self.profession" Multiplicity="1" />
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profession">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_open_information">
+              <PropertyRef Name="profession_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_open_information_ibfk_1">
+          <End Role="sex" Type="Self.sex" Multiplicity="1" />
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sex">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_open_information">
+              <PropertyRef Name="sex_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="complete_task_ibfk_2">
+          <End Role="task" Type="Self.task" Multiplicity="1" />
+          <End Role="complete_task" Type="Self.complete_task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="task">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="complete_task">
+              <PropertyRef Name="task_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_open_information_ibfk_2">
+          <End Role="user_close_information" Type="Self.user_close_information" Multiplicity="1" />
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="user_close_information">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_open_information">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="complete_task_ibfk_1">
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="1" />
+          <End Role="complete_task" Type="Self.complete_task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_open_information">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="complete_task">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="contact_information_ibfk_2">
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="1" />
+          <End Role="contact_information" Type="Self.contact_information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_open_information">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="contact_information">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_open_information_ibfk_4">
+          <End Role="user_status" Type="Self.user_status" Multiplicity="1" />
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_open_information">
+              <PropertyRef Name="user_status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_post_ibfk_1">
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="1" />
+          <End Role="user_post" Type="Self.user_post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_open_information">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_post">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_post_сomment_ibfk_1">
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="1" />
+          <End Role="user_post_сomment" Type="Self.user_post_сomment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_open_information">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_post_сomment">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_post_сomment_ibfk_2">
+          <End Role="user_post" Type="Self.user_post" Multiplicity="1" />
+          <End Role="user_post_сomment" Type="Self.user_post_сomment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_post">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_post_сomment">
+              <PropertyRef Name="user_post_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="friend_list">
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="*" />
+          <End Role="user_open_information1" Type="Self.user_open_information" Multiplicity="*" />
+        </Association>
+        <Association Name="user_in_talk">
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="*" />
+          <End Role="talk" Type="Self.talk" Multiplicity="*" />
+        </Association>
+        <Association Name="users_in_group">
+          <End Role="user_open_information" Type="Self.user_open_information" Multiplicity="*" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="db_a3cf84_akkara2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="city" EntityType="Self.city" />
+          <EntitySet Name="contact_type" EntityType="Self.contact_type" />
+          <EntitySet Name="group_post" EntityType="Self.group_post" />
+          <EntitySet Name="group_post_сomment" EntityType="Self.group_post_сomment" />
+          <EntitySet Name="group_status" EntityType="Self.group_status" />
+          <EntitySet Name="groups" EntityType="Self.groups" />
+          <EntitySet Name="message" EntityType="Self.message" />
+          <EntitySet Name="message_status" EntityType="Self.message_status" />
+          <EntitySet Name="profession" EntityType="Self.profession" />
+          <EntitySet Name="sex" EntityType="Self.sex" />
+          <EntitySet Name="talk" EntityType="Self.talk" />
+          <EntitySet Name="task" EntityType="Self.task" />
+          <EntitySet Name="user_close_information" EntityType="Self.user_close_information" />
+          <EntitySet Name="user_open_information" EntityType="Self.user_open_information" />
+          <EntitySet Name="user_post" EntityType="Self.user_post" />
+          <EntitySet Name="user_post_сomment" EntityType="Self.user_post_сomment" />
+          <EntitySet Name="user_status" EntityType="Self.user_status" />
+          <EntitySet Name="complete_task" EntityType="Self.complete_task" />
+          <EntitySet Name="contact_information" EntityType="Self.contact_information" />
+          <AssociationSet Name="user_open_information_ibfk_5" Association="Self.user_open_information_ibfk_5">
+            <End Role="city" EntitySet="city" />
+            <End Role="user_open_information" EntitySet="user_open_information" />
+          </AssociationSet>
+          <AssociationSet Name="contact_information_ibfk_1" Association="Self.contact_information_ibfk_1">
+            <End Role="contact_type" EntitySet="contact_type" />
+            <End Role="contact_information" EntitySet="contact_information" />
+          </AssociationSet>
+          <AssociationSet Name="group_post_ibfk_1" Association="Self.group_post_ibfk_1">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="group_post" EntitySet="group_post" />
+          </AssociationSet>
+          <AssociationSet Name="group_post_сomment_ibfk_2" Association="Self.group_post_сomment_ibfk_2">
+            <End Role="group_post" EntitySet="group_post" />
+            <End Role="group_post_сomment" EntitySet="group_post_сomment" />
+          </AssociationSet>
+          <AssociationSet Name="group_post_сomment_ibfk_1" Association="Self.group_post_сomment_ibfk_1">
+            <End Role="user_open_information" EntitySet="user_open_information" />
+            <End Role="group_post_сomment" EntitySet="group_post_сomment" />
+          </AssociationSet>
+          <AssociationSet Name="groups_ibfk_1" Association="Self.groups_ibfk_1">
+            <End Role="group_status" EntitySet="group_status" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="message_ibfk_1" Association="Self.message_ibfk_1">
+            <End Role="user_open_information" EntitySet="user_open_information" />
+            <End Role="message" EntitySet="message" />
+          </AssociationSet>
+          <AssociationSet Name="message_ibfk_2" Association="Self.message_ibfk_2">
+            <End Role="talk" EntitySet="talk" />
+            <End Role="message" EntitySet="message" />
+          </AssociationSet>
+          <AssociationSet Name="message_ibfk_3" Association="Self.message_ibfk_3">
+            <End Role="message_status" EntitySet="message_status" />
+            <End Role="message" EntitySet="message" />
+          </AssociationSet>
+          <AssociationSet Name="task_ibfk_1" Association="Self.task_ibfk_1">
+            <End Role="profession" EntitySet="profession" />
+            <End Role="task" EntitySet="task" />
+          </AssociationSet>
+          <AssociationSet Name="user_open_information_ibfk_3" Association="Self.user_open_information_ibfk_3">
+            <End Role="profession" EntitySet="profession" />
+            <End Role="user_open_information" EntitySet="user_open_information" />
+          </AssociationSet>
+          <AssociationSet Name="user_open_information_ibfk_1" Association="Self.user_open_information_ibfk_1">
+            <End Role="sex" EntitySet="sex" />
+            <End Role="user_open_information" EntitySet="user_open_information" />
+          </AssociationSet>
+          <AssociationSet Name="complete_task_ibfk_2" Association="Self.complete_task_ibfk_2">
+            <End Role="task" EntitySet="task" />
+            <End Role="complete_task" EntitySet="complete_task" />
+          </AssociationSet>
+          <AssociationSet Name="user_open_information_ibfk_2" Association="Self.user_open_information_ibfk_2">
+            <End Role="user_close_information" EntitySet="user_close_information" />
+            <End Role="user_open_information" EntitySet="user_open_information" />
+          </AssociationSet>
+          <AssociationSet Name="complete_task_ibfk_1" Association="Self.complete_task_ibfk_1">
+            <End Role="user_open_information" EntitySet="user_open_information" />
+            <End Role="complete_task" EntitySet="complete_task" />
+          </AssociationSet>
+          <AssociationSet Name="contact_information_ibfk_2" Association="Self.contact_information_ibfk_2">
+            <End Role="user_open_information" EntitySet="user_open_information" />
+            <End Role="contact_information" EntitySet="contact_information" />
+          </AssociationSet>
+          <AssociationSet Name="user_open_information_ibfk_4" Association="Self.user_open_information_ibfk_4">
+            <End Role="user_status" EntitySet="user_status" />
+            <End Role="user_open_information" EntitySet="user_open_information" />
+          </AssociationSet>
+          <AssociationSet Name="user_post_ibfk_1" Association="Self.user_post_ibfk_1">
+            <End Role="user_open_information" EntitySet="user_open_information" />
+            <End Role="user_post" EntitySet="user_post" />
+          </AssociationSet>
+          <AssociationSet Name="user_post_сomment_ibfk_1" Association="Self.user_post_сomment_ibfk_1">
+            <End Role="user_open_information" EntitySet="user_open_information" />
+            <End Role="user_post_сomment" EntitySet="user_post_сomment" />
+          </AssociationSet>
+          <AssociationSet Name="user_post_сomment_ibfk_2" Association="Self.user_post_сomment_ibfk_2">
+            <End Role="user_post" EntitySet="user_post" />
+            <End Role="user_post_сomment" EntitySet="user_post_сomment" />
+          </AssociationSet>
+          <AssociationSet Name="friend_list" Association="Self.friend_list">
+            <End Role="user_open_information" EntitySet="user_open_information" />
+            <End Role="user_open_information1" EntitySet="user_open_information" />
+          </AssociationSet>
+          <AssociationSet Name="user_in_talk" Association="Self.user_in_talk">
+            <End Role="user_open_information" EntitySet="user_open_information" />
+            <End Role="talk" EntitySet="talk" />
+          </AssociationSet>
+          <AssociationSet Name="users_in_group" Association="Self.users_in_group">
+            <End Role="user_open_information" EntitySet="user_open_information" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище a39b85_diplomContainer" CdmEntityContainer="db_a3cf84_akkara2Entities">
+          <EntitySetMapping Name="city">
+            <EntityTypeMapping TypeName="a39b85_diplom.city">
+              <MappingFragment StoreEntitySet="city">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name_of" ColumnName="name_of" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contact_type">
+            <EntityTypeMapping TypeName="a39b85_diplom.contact_type">
+              <MappingFragment StoreEntitySet="contact_type">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name_of" ColumnName="name_of" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="group_post">
+            <EntityTypeMapping TypeName="a39b85_diplom.group_post">
+              <MappingFragment StoreEntitySet="group_post">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="photo_path" ColumnName="photo_path" />
+                <ScalarProperty Name="group_id" ColumnName="group_id" />
+                <ScalarProperty Name="date_of_creation" ColumnName="date_of_creation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="group_post_сomment">
+            <EntityTypeMapping TypeName="a39b85_diplom.group_post_сomment">
+              <MappingFragment StoreEntitySet="group_post_сomment">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="group_post_id" ColumnName="group_post_id" />
+                <ScalarProperty Name="user_text" ColumnName="user_text" />
+                <ScalarProperty Name="sending_time" ColumnName="sending_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="group_status">
+            <EntityTypeMapping TypeName="a39b85_diplom.group_status">
+              <MappingFragment StoreEntitySet="group_status">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name_of" ColumnName="name_of" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="groups">
+            <EntityTypeMapping TypeName="a39b85_diplom.groups">
+              <MappingFragment StoreEntitySet="groups">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name_of" ColumnName="name_of" />
+                <ScalarProperty Name="about_group" ColumnName="about_group" />
+                <ScalarProperty Name="group_status_id" ColumnName="group_status_id" />
+                <ScalarProperty Name="date_of_creation" ColumnName="date_of_creation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="message">
+            <EntityTypeMapping TypeName="a39b85_diplom.message">
+              <MappingFragment StoreEntitySet="message">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="talk_id" ColumnName="talk_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="user_text" ColumnName="user_text" />
+                <ScalarProperty Name="sending_time" ColumnName="sending_time" />
+                <ScalarProperty Name="message_status_id" ColumnName="message_status_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="message_status">
+            <EntityTypeMapping TypeName="a39b85_diplom.message_status">
+              <MappingFragment StoreEntitySet="message_status">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name_of" ColumnName="name_of" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="profession">
+            <EntityTypeMapping TypeName="a39b85_diplom.profession">
+              <MappingFragment StoreEntitySet="profession">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name_of" ColumnName="name_of" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sex">
+            <EntityTypeMapping TypeName="a39b85_diplom.sex">
+              <MappingFragment StoreEntitySet="sex">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name_of" ColumnName="name_of" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="talk">
+            <EntityTypeMapping TypeName="a39b85_diplom.talk">
+              <MappingFragment StoreEntitySet="talk">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="date_of_creation" ColumnName="date_of_creation" />
+                <ScalarProperty Name="name_of" ColumnName="name_of" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="task">
+            <EntityTypeMapping TypeName="a39b85_diplom.task">
+              <MappingFragment StoreEntitySet="task">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="profession_id" ColumnName="profession_id" />
+                <ScalarProperty Name="task_path" ColumnName="task_path" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_close_information">
+            <EntityTypeMapping TypeName="a39b85_diplom.user_close_information">
+              <MappingFragment StoreEntitySet="user_close_information">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_login" ColumnName="user_login" />
+                <ScalarProperty Name="user_pasword" ColumnName="user_pasword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_open_information">
+            <EntityTypeMapping TypeName="a39b85_diplom.user_open_information">
+              <MappingFragment StoreEntitySet="user_open_information">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="sex_id" ColumnName="sex_id" />
+                <ScalarProperty Name="about_youself" ColumnName="about_youself" />
+                <ScalarProperty Name="profession_id" ColumnName="profession_id" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="user_status_id" ColumnName="user_status_id" />
+                <ScalarProperty Name="city_id" ColumnName="city_id" />
+                <ScalarProperty Name="avatar_path" ColumnName="avatar_path" />
+                <ScalarProperty Name="user_quote" ColumnName="user_quote" />
+                <ScalarProperty Name="date_of_birth" ColumnName="date_of_birth" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_post">
+            <EntityTypeMapping TypeName="a39b85_diplom.user_post">
+              <MappingFragment StoreEntitySet="user_post">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="photo_path" ColumnName="photo_path" />
+                <ScalarProperty Name="date_of_creation" ColumnName="date_of_creation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_post_сomment">
+            <EntityTypeMapping TypeName="a39b85_diplom.user_post_сomment">
+              <MappingFragment StoreEntitySet="user_post_сomment">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="user_post_id" ColumnName="user_post_id" />
+                <ScalarProperty Name="user_text" ColumnName="user_text" />
+                <ScalarProperty Name="sending_time" ColumnName="sending_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_status">
+            <EntityTypeMapping TypeName="a39b85_diplom.user_status">
+              <MappingFragment StoreEntitySet="user_status">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name_of" ColumnName="name_of" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="complete_task">
+            <EntityTypeMapping TypeName="a39b85_diplom.complete_task">
+              <MappingFragment StoreEntitySet="complete_task">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="task_id" ColumnName="task_id" />
+                <ScalarProperty Name="time_of_complete" ColumnName="time_of_complete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contact_information">
+            <EntityTypeMapping TypeName="a39b85_diplom.contact_information">
+              <MappingFragment StoreEntitySet="contact_information">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="contact_type_id" ColumnName="contact_type_id" />
+                <ScalarProperty Name="information" ColumnName="information" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="friend_list" TypeName="a39b85_diplom.friend_list" StoreEntitySet="friend_list">
+            <EndProperty Name="user_open_information">
+              <ScalarProperty Name="id" ColumnName="I_user_id" />
+            </EndProperty>
+            <EndProperty Name="user_open_information1">
+              <ScalarProperty Name="id" ColumnName="friend_user_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="user_in_talk" TypeName="a39b85_diplom.user_in_talk" StoreEntitySet="user_in_talk">
+            <EndProperty Name="user_open_information">
+              <ScalarProperty Name="id" ColumnName="user_id" />
+            </EndProperty>
+            <EndProperty Name="talk">
+              <ScalarProperty Name="id" ColumnName="talk_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="users_in_group" TypeName="a39b85_diplom.users_in_group" StoreEntitySet="users_in_group">
+            <EndProperty Name="user_open_information">
+              <ScalarProperty Name="id" ColumnName="user_id" />
+            </EndProperty>
+            <EndProperty Name="groups">
+              <ScalarProperty Name="id" ColumnName="group_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

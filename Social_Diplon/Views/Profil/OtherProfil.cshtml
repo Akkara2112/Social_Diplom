@@ -1,0 +1,216 @@
+﻿@using Social_Diplon.Models;
+@{
+    ViewBag.Title = "OtherProfil";
+    Layout = "~/Views/_Layout.cshtml";
+}
+@{ Html.RenderPartial("head");}
+@*<header class="row" style="padding-bottom: 10px;">
+    <nav class="justify-content-between container col-12 navbar navbar-expand-sm navbar-inverse bg-primary header_nav" id="nav">
+        <!--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button> -->
+        <a class="navbar-brand col-2 offset-1" style="color: #e8eeee; margin-left: 10.5%">Network</a>
+        <!--<div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav mr-auto nav_li" id="link">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Главная<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Каталог</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">О нас</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Корзина</a>
+                </li>
+            </ul> -->
+        <!--<form class="col-3 form-inline my-2 my-lg-0">
+            <p style="color: #e8eeee; margin-top: 5px" name="orientation">Prof. orientation, 21</p>
+        </form> -->
+        <div class=" col-3 form-inline my-2 my-lg-0 dropdown">
+            <a href="#" class="dropdown-toggle link" data-toggle="dropdown" style="margin-left: 3%; color: #e8eeee;">
+                @ViewBag.Prof, @ViewBag.Raiting
+            </a>
+            <div class="dropdown-menu" style="font-size: 0.8rem;">
+                <a class="dropdown-item text-secondary" href="#">Профиль</a>
+                <a class="dropdown-item text-secondary" href="#">Настройки</a>
+                <div class="dropdown-divider"></div>
+                @Html.RouteLink("Выход", new { controller = "Exit", action = "Index" }, new { @class = "dropdown-item text-secondary" })
+                @*<a class="dropdown-item text-secondary" href="#">Выход</a>*@
+@* </div>
+            </div>
+        </nav>
+    </header>*@
+
+<section class="row">
+    @{ Html.RenderPartial("section");}
+    @*<form class="col-2 offset-1">
+            <ul>
+                <li class="nav nav-sidebar btn-info btn_menu"><a class="btn w-100">Профиль</a></li>
+                <li class="nav nav-sidebar btn-info btn_menu"><a class="btn w-100">Лента</a></li>
+                <li class="nav nav-sidebar btn-info btn_menu"><a class="btn w-100">Группы</a></li>
+                <li class="nav nav-sidebar btn-info btn_menu"><a class="btn w-100">Собщения</a></li>
+                <li class="nav nav-sidebar btn-info btn_menu"><a class="btn w-100">Друзья</a></li>
+                <li class="nav nav-sidebar btn-info btn_menu"><a class="btn w-100">Статистика</a></li>
+                <li class="nav nav-sidebar btn-info btn_menu"><a class="btn w-100">Задания</a></li>
+            </ul>
+        </form>*@
+
+    <div class="col-6">
+
+        @foreach (var u in (ViewBag.I as List<ReturnYouself>))
+        {
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal_@u.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Написать сообщение</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <form class="w-100">
+                            <div class="w-100" style="padding-top: 10px; padding-bottom: 10px;">
+                                <div class="col-3 d-inline-block">
+                                    <img src="@u.avatar_path" style="border-radius: 50%; height: 80px; width: 80px; display: inline-block;">
+                                </div>
+                                <div class="col-7 d-inline-block">
+                                    <h6 class="w-100">@u.first_name @u.last_name </h6>
+                                    <p class="w-100 d-inline-block" style="font-size: 0.85em; margin-bottom: 5px;">@u.user_quote</p>
+                                </div>
+                            </div>
+                            <hr class="message-hr">
+                        </form>
+
+                        @*<form class="form-inline row">*@
+                        @using (Html.BeginForm("SendMessage", "Profil", FormMethod.Post))
+                        {
+                            @Html.Hidden("userId", u.id)
+                            <div class="w-100">
+                                <textarea class="form-control w-100" placeholder="Введите текст сообщения" name="userText" required></textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-primary" />
+                                @*<button type="button" class="btn btn-primary">Отправить</button>*@
+
+                            </div>
+                        }
+
+                        @*</form>*@
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        }
+
+
+
+        <div class="col-4 avatar" style="background: #e8eeee; display: inline-block; max-width: 32.6%">
+            @foreach (var i in (ViewBag.I as List<ReturnYouself>))
+            {
+                <div class="w-100 avatar_photo" style="height: 80%; padding: 5px 5px 5px 5px;"> <img src="@i.avatar_path" style="height: 110%;width: 100%;" /></div>
+
+            <div class="w-100">
+                <center><button class="btn btn-secondary" style="width: 90%" name="send_message" value="add" data-toggle="modal" data-target="#exampleModal_@i.id">Отправить сообщение</button></center>
+                <p></p>
+            </div>
+            }
+        </div>
+        <div class="col-8" style="background-color: #e8eeee; float: right; display: inline-block;">
+            <div style="margin-left: 5px; margin-right:5px;">
+                @foreach (var i in (ViewBag.I as List<ReturnYouself>))
+                {
+                    <h5 style="margin-top: 10px; margin-bottom: 3px;">@i.first_name @i.patronymic @i.last_name</h5>
+                    <p style="font-size:0.85em; margin-bottom: 5px;">@i.user_quote</p>
+                    <hr style="width: 100%">
+                    <div class="row">
+                        <div class="col-4 info" style="display: inline-block;">
+                            <p>Страна:</p>
+                        </div>
+                        <div class="col-8 info" style="float: right; display: inline-block;">
+                            <p>Беларусь</p>
+                        </div>
+                        <div class="col-4 info" style="display: inline-block;">
+                            <p>Город:</p>
+                        </div>
+                        <div class="col-8 info" style="float: right; display: inline-block;">
+                            <p>@i.city</p>
+                        </div>
+                        <div class="col-4 info" style="display: inline-block;">
+                            <p>Дата рождения:</p>
+                        </div>
+                        <div class="col-8 info" style="float: right; display: inline-block;">
+                            <p>@i.date_of_birth</p>
+                        </div>
+                        @*<div class="col-4 info" style="display: inline-block;">
+                            <p>E-mail:</p>
+                        </div>
+                        <div class="col-8 info" style="float: right; display: inline-block;">
+                            <p>mail.ru</p>
+                        </div>*@
+                        <div class="col-4 info" style="display: inline-block;">
+                            <p>Контактная информация:</p>
+                        </div>
+                        <div class="col-8 info" style="float: right; display: inline-block;">
+                            <p>VK, Teelegram, Skype</p>
+                        </div>
+                        <div class="col-4 info" style="display: inline-block;">
+                            <p>О себе:</p>
+                        </div>
+                        <div class="col-8 info" style="float: right; display: inline-block;">
+                            <p>@i.about_youself</p>
+                        </div>
+                    </div>
+                }
+
+
+                @*<hr>
+
+                        <div class="row">
+                            <!--<form class="w-100" action="~/Controllers/">-->
+                            @using (Html.BeginForm("GetUserPost", "Profil", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                <textarea name="postarea" class="col-8 form-control" placeholder="type here..." style="display:inline-block;" required></textarea>
+                                <input name="uploadpostpic" type="file" accept="image/jpg, image/jpeg, image/png" />
+                                <input type="submit" name="post" class="btn btn-info offset-9" style="display:inline-block; float:right;" value="Отправить" />
+                                <button name="post" class="btn btn-info offset-9" style="display:inline-block; float:right;">Отправить</button>
+                    }
+                    <!--</form>-->
+                </div>*@
+
+                <hr>
+
+                <div class="row">
+                    @foreach (var posts in (ViewBag.Posts as List<UserPosts>))
+                    {
+                        <div class="w-100 border-shadow post">
+                            <p style="font-size: 0.85em; margin-bottom: 5px;">@posts.description</p>
+                            <img src="@posts.photo_path" class=" border-shadow" style="border-radius: 3px; width:95%">
+                        </div>
+                    }
+
+                </div>
+
+                <div class="row post">
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-2">
+        <div class="w-100" style="background: #e8eeee; border-radius: 3px; padding-left: 2px; ">
+            <div class="w-100 border-shadow"><p style="font-size: 0.85em;">Напоминание: сегодня пройдет мероприятие, которое надо постетить!</p></div>
+            <p style="font-size: 0.85em;">Напоминание: сегодня пройдет мероприятие, которое надо постетить!</p>
+            <p style="font-size: 0.85em;">Напоминание: сегодня пройдет мероприятие, которое надо постетить!</p>
+
+        </div>
+    </div>
+</section>

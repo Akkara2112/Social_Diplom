@@ -1,0 +1,265 @@
+﻿@using Social_Diplon.Models;
+@{
+    ViewBag.Title = "MessageList";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+
+
+@{ Html.RenderPartial("head");}
+
+@*<header class="row" style="padding-bottom: 10px;">
+    <nav class="justify-content-between container col-12 navbar navbar-expand-sm navbar-inverse bg-primary header_nav" id="nav">
+        <script src="~/Scripts/jquery.signalR-2.2.3.js"></script>
+        <script src="~/signalr/hubs"></script>
+        <a class="navbar-brand col-2 offset-1" style="color: #e8eeee; margin-left: 10.5%">Network</a>
+        <div class=" col-3 form-inline my-2 my-lg-0 dropdown">
+            <a href="#" class="dropdown-toggle link" data-toggle="dropdown" style="margin-left: 3%; color: #e8eeee;">
+                @ViewBag.Prof, @ViewBag.Raiting
+            </a>
+            <div class="dropdown-menu" style="font-size: 0.8rem;">
+                <a class="dropdown-item text-secondary" href="#">Профиль</a>
+                <a class="dropdown-item text-secondary" href="#">Настройки</a>
+                <div class="dropdown-divider"></div>
+                @Html.RouteLink("Выход", new { controller = "Exit", action = "Index" }, new { @class = "dropdown-item text-secondary" })
+                @*<a class="dropdown-item text-secondary" href="#">Выход</a>*@
+@*</div>
+            </div>
+        </nav>
+    </header>*@
+
+<section class="row">
+
+    @{ Html.RenderPartial("section");}
+    @*<form class="col-2 offset-1">
+            <ul>
+                <li class="nav nav-sidebar btn-info btn_menu"><a class="btn w-100">Профиль</a></li>
+                <li class="nav nav-sidebar btn-info btn_menu"><a class="btn w-100">Лента</a></li>
+                <li class="nav nav-sidebar btn-info btn_menu"><a class="btn w-100">Группы</a></li>
+                <li class="nav nav-sidebar btn-info btn_menu"><a class="btn w-100">Собщения</a></li>
+                <li class="nav nav-sidebar btn-info btn_menu"><a class="btn w-100">Друзья</a></li>
+                <li class="nav nav-sidebar btn-info btn_menu"><a class="btn w-100">Статистика</a></li>
+                <li class="nav nav-sidebar btn-info btn_menu"><a class="btn w-100">Задания</a></li>
+            </ul>
+        </form>*@
+    <style>
+        .edge {
+            min-height: -webkit-fill-available;
+        }
+    </style>
+    <div class="col-6">
+        <div class="w-100 edge d-inline-block" style="background-color: #e8eeee; float: right;">
+            <div id="MessageList" class="w-100">
+                <div style="margin-left: 10px; margin-right:10px;">
+                    <h6 class="col-10 d-inline-block" style="margin-top: 10px; margin-bottom: 3px;">Диалоги</h6>
+                    <button type="button" class="col-1 btn" data-toggle="modal" data-target="#exampleModal">+</button>
+                    <!--<input type="image" src="../plus.png" class="col-1 btn" value=""> -->
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Создание беседы</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <!--Поля поиска и названия беседы -->
+                                    <form class="form-inline row">
+                                        <div class="w-100">
+                                            <p class="w-100">Введите название беседы</p>
+                                            <input type="text" class="form-control w-100">
+                                            <hr>
+                                        </div>
+                                        <div class="w-100">
+                                            <p class="col-4 d-inline-block">Найди собеседника</p>
+                                            <input type="search" class="form-control" style="width: 47%">
+                                            <input type="submit" class="col-2 btn btn-secondary float-right" value="Найти">
+                                            <hr>
+                                        </div>
+                                    </form>
+
+                                    <form class="w-100">
+                                        <div class="w-100" style="padding-top: 10px; padding-bottom: 10px;">
+                                            <div class="col-3 d-inline-block">
+                                                <img src="~/Images/default/bear.jpg style="border-radius: 50%; height: 80px; width: 80px; display: inline-block;">
+                                            </div>
+                                            <div class="col-7 d-inline-block">
+                                                <h6 class="w-100">Name Sername</h6>
+                                                <p class="w-100 d-inline-block" style="font-size: 0.85em; margin-bottom: 5px;">hey, look at me</p>
+                                            </div>
+                                            <div class="col-1 d-inline-block">
+                                                <button class="btn">+</button>
+                                            </div>
+                                        </div>
+                                        <hr class="message-hr">
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*<hr>
+                        </div>
+                        <div class="w-100 collapse" style="height: 100%">
+                            <p class="text-center text-secondary">Здесь будут отображаться ваши диалоги</p>
+                        </div>*@
+
+
+                    @*<div class="w-90">
+                                <div class="w-100">
+                                    <div class="w-100" style="padding-top: 10px; padding-bottom: 10px;">
+                                        <div class="col-2" style="display: inline-block;">
+                                            <img src="~/Images/default/bear.jpg" style="border-radius: 50%; height: 90px; width: 90px; display: inline-block;">
+                                        </div>
+                                        <div class="col-9" style="display: inline-block;">
+                                            <h6 class="w-100">Name Sername</h6>
+                                            <p class="w-100" style="font-size: 0.85em; margin-bottom: 5px;display: inline-block;">hey, look at me</p>
+                                        </div>
+                                    </div>
+                                    <hr class="message-hr">
+
+
+                                    <div class="w-100">
+                                        <div class="w-100" style="padding-top: 10px; padding-bottom: 10px; background: #caddde">
+                                            <div class="col-2" style="display: inline-block;">
+                                                <img src="~/Images/default/bear.jpg" style="border-radius: 50%; height: 90px; width: 90px; display: inline-block;">
+                                            </div>
+                                            <div class="col-9" style="display: inline-block;">
+                                                <h6 class="w-100">Name Sername</h6>
+                                                <p class="w-100" style="font-size: 0.85em; margin-bottom: 5px;display: inline-block;">i send it to u</p>
+                                            </div>
+                                        </div>
+                                        <hr class="message-hr">
+                                    </div>
+
+                                    <div class="w-100">
+                                        <div class="w-100" style="padding-top: 10px; padding-bottom: 10px;">
+                                            <div class="col-2" style="display: inline-block;">
+                                                <img src="~/Images/default/bear.jpg" style="border-radius: 50%; height: 90px; width: 90px; display: inline-block;">
+                                            </div>
+                                            <div class="col-9" style="display: inline-block;">
+                                                <h6 class="w-100">Name Sername</h6>
+                                                <div class="w-100">
+                                                    <div class="col-1" style="display: inline-block;">
+                                                        <img src="~/Images/default/bear.jpg" style="border-radius: 50%; height: 40px; width: 40px; display: inline-block;">
+                                                    </div>
+                                                    <p class="col-7" style="font-size: 0.85em; margin-bottom: 5px;display: inline-block;">u send it to me and i read</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="message-hr">
+                                    </div>
+
+                                    <div class="w-100">
+                                        <div class="w-100" style="padding-top: 10px; padding-bottom: 10px;">
+                                            <div class="col-2" style="display: inline-block;">
+                                                <img src="~/Images/default/bear.jpg" style="border-radius: 50%; height: 90px; width: 90px; display: inline-block;">
+                                            </div>
+                                            <div class="col-9" style="display: inline-block;">
+                                                <h6 class="w-100">Name Sername</h6>
+                                                <div class="w-100">
+                                                    <div class="col-1" style="display: inline-block;">
+                                                        <img src="~/Images/default/bear.jpg" style="border-radius: 50%; height: 40px; width: 40px; display: inline-block;">
+                                                    </div>
+                                                    <p class="col-10" style="font-size: 0.85em; margin-bottom: 5px;display: inline-block;  background: #caddde">u send it to me</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="message-hr">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+
+
+
+
+                    @*<div class="w-100">*@
+
+                    @*<div class="w-100">
+                            <div class="col-2 d-inline-block">
+                                <img src="~/Images/default/bear.jpg" class="d-inline-block" style="border-radius: 50%; height: 60px; width: 60px;">
+                            </div>
+                            <div class="col-9 d-inline-block">
+                                <h6 class="w-100">Name Sername</h6>
+                            </div>
+                        </div>*@
+
+                    <div class="row">
+                        <div class="col-4 friendBox">
+
+                            @*нужно выгрузить через цикл диалоги вот в таком вот блоке. он такой один. id=1  для примера*@
+
+                            @foreach (var t in (ViewBag.AllTalks as List<ReturnTalks>))
+                            {
+                                <div class="w-100 friend-list myclass" data-id="@t.id">
+                                    <div class="w-100" style="padding-top: 10px; padding-bottom: 10px; background: #caddde">
+                                        <div class="col-3 d-inline-block">
+                                            <img src="bear.jpg" style="border-radius: 50%; height: 50px; width: 50px; display: inline-block;">
+                                        </div>
+                                        <div class="col-8 d-inline-block">
+                                            <h6 class="w-100">@t.TalkName</h6>
+                                            <p class="w-100" style="font-size: 0.85em; margin-bottom: 5px;display: inline-block;">@t.LastMessage</p>
+                                        </div>
+                                    </div>
+                                    <hr class="margin-bottom-none">
+                                </div>
+                            }
+
+
+
+
+                        </div>
+
+                        <div class="col-8">
+                            <div id="MessageBox" class="w-100 padding-none messageBox">
+                                <div id="messageContent">
+
+                                </div>
+                                
+                                @*<div id="MessageBox" class="w-100 padding-none messageBox">*@
+                                <!-- <div class="col-9">
+                                        <div class="w-100">
+                                            <div  style="background-color: #66CDAA; border-radius: 5px; max-width: 70%;">
+                                                <pre class="margin-bottom-none">
+                                  \(^.^)
+                                    ) )z
+                                    / \
+                                </pre>
+                                            </div>
+                                        </div>
+                                        <p class="col-4 date-time">16.05.2018 14:04</p>
+                                    </div>
+
+                                    <div class="col-9 offset-3">
+                                        <div class="w-100" style="background-color: #E0FFFF; border-radius: 5px">
+                                            <pre class="margin-bottom-none">
+                                  \(^.^)
+                                    ) )z
+                                    / \
+                                </pre>
+                                        </div>
+                                        <p class="col-4 offset-8 date-time float-right">16.05.2018 14:04</p>
+                                    </div> -->
+                                @*</div>*@
+                                <div id="MessageIn" class="background fixed-bottom form-inlin" style="height: 20%; width: 50%;margin: 0 auto">
+                                    <textarea id="MessageArea" class="form-control w-100" placeholder="Введите текст сообщения"></textarea>
+                                    <button class="btn btn-seconary offset-9" style="width: 7.5%">+</button>
+                                    <input id="SendMessage" type="button" class="btn btn-info col-2" value="Отправить" />
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+</section>
+

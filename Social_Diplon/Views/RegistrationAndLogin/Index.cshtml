@@ -1,0 +1,162 @@
+﻿@using Social_Diplon.Models;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Layout.cshtml";
+}
+@* а ты устанавливала какие-нибудь дополнительные пакеты?
+    signalr
+    хм... короче, бд я подключила.
+    SmartASP.Net логин: akkara2112 пароль: 9253598s
+    это если нужно будет смотреть базу данных, там всё есть.
+    ну как-то так. посмотри что не так с owin и потом проверишь работоспособность бд. оно должно работать.
+    проверка на повторение есть.
+    что еще?
+    ничего
+    ну вроде всё должно заработать
+    оки я отключаюсь тогда*@
+@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
+
+
+<header class="row" style="padding-bottom: 10px;">
+    <nav class="justify-content-between container col-12 navbar navbar-expand-sm navbar-inverse bg-primary header_nav" id="nav">
+        <a class="navbar-brand col-2 offset-1" style="color: #e8eeee; margin-left: 10.5%">Network</a>
+    </nav>
+</header>
+<section class="row">
+
+    <div class="col-7 offset-1 background" style="padding-left:40px; padding-top: 50px; margin-right: 3px; border-radius: 3px">
+        <div style="padding-right:25px;">
+            <h5 style=" padding-bottom: 5%; text-align: center;">Добро пожаловать в нашу социальную сеть Network!</h5>
+            <p>
+                Находите и поддерживайте связь с друзьями, единомышленниками и просто приятными людьми.Следите за новостями о последних
+                событиях в мире профессий и обучения. Надеемся наш проект поможет выбрать правильное будущее :)
+            </p>
+
+            <div class="w-100" id="ProfessionsImg">
+                <img src="~/Images/default/professions.jpg" class="col-10 offset-1" style="margin-bottom: 50px; margin-top: 20px; border-radius: 3px">
+            </div>
+
+            <div class="w-100 collapse" id="reg-field">
+                <h5 style="margin-top:50px; text-align: center;">Регистрация</h5>
+                <!--<form id="RegistrationForm" class="" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#results" method="post" action="/RegistrationAndLogin/Registration" style="margin-top:30px;">-->
+                @*Вот это тоже. это вместо формы.*@
+
+                <!--</form>-->
+                <form action="/RegistrationAndLogin/Registration" method="post" id="RegistrationForm" >
+                    <div class="w-100">
+
+                        <div class="col-6" style="display:inline-block; height: 12%">
+                            <p class="col-3" style="display:inline-block;">Логин:</p>
+                            <input type="text" id="LoginInField" name="LoginField" style="display:inline-block; max-width: 73.7%;" class="col-9 form-control" placeholder="Enter login">
+                        </div>
+
+                        <div class="col-6" style="display:inline-block; float: right">
+                            <p class="col-3" style="display:inline-block; text-align: center;">Пароль:</p>
+                            <input type="password" name="PasswordInField" id="PasswordInField" style="display:inline-block;  max-width: 73.7%;" class="col-9 form-control" placeholder="Enter password">
+
+                        </div>
+
+                        <div class="col-6 offset-6" id="PasswordConfirmDiv" style="display:inline-block; float: right">
+                            <p class="col-3" style="display:inline-block; text-align: center;">Еще раз:</p>
+                            <input type="password" name="PasswordConfirmField" id="PasswordConfirmField" style="display:inline-block;  max-width: 73.7%;" class="col-9 form-control" placeholder="Confirm password">
+                        </div>
+
+                        <div class="col-6" style="display:inline-block; height: 12%">
+                            <p class="col-3" style="display:inline-block;">Фамилия:</p>
+                            <input type="text" id="LastNameField" name="LastNameField" style="display:inline-block; max-width: 73.7%;" class="col-9 form-control" placeholder="Last name">
+                            <!--<p id="LastNameAlert" class="col-8 offset-3 invisible" style="display:block; color:red; font-size:0.6em; margin-top:-5px">Поле должно быть заполнено!</p> -->
+                        </div>
+
+                        <div class="col-6" style="display:inline-block; float: right">
+                            <p class="col-3" style="display:inline-block; text-align: center;">Имя:</p>
+                            <input type="text" name="FirstNameField" id="FirstNameField" style="display:inline-block;  max-width: 73.7%;" class="col-9 form-control" placeholder="First name">
+
+                        </div>
+
+                        <div class="col-6" style="display:inline-block; float: right">
+                            <p class="col-3" style="display:inline-block; ">Отчество:</p>
+                            <input type="text" id="FathertNameField" name="FathertNameField" style="display:inline-block;  max-width: 73.7%;" class="col-9 form-control" placeholder="Father name">
+                        </div>
+
+                        <div class="col-6" style="display:inline-block;">
+                            <p class="col-3" style="display:inline-block">Город:</p>
+                            <!--<input type="text" style="display:inline-block;  max-width: 73.7%;" class="col-9 form-control" placeholder="City"> -->
+                            <select style="display:inline-block;  max-width: 73.7%;" class="col-9 form-control" id="exampleFormControlSelect2" name="testSomeSelector">
+                                <option> - </option>
+                                @foreach (city c in Model)
+                    {
+                        <option value="@c.id">@c.name_of</option>//!!!!!!!!!!!!!
+        }
+                            </select>
+                        </div>
+
+                        <div class="col-6" style="display:inline-block; margin-top: 25px">
+                            <p class="col-5" style="display:inline-block;">День рождения:</p>
+                            <input class="form-control" type="date" value="2011-08-19T13:45:00" id="example-date-input" style="display:inline-block;  max-width: 57%;" name="testSomeDate">
+                        </div>
+
+                        <div class="col-6" style="display:inline-block; margin-top: 25px">
+                            <p class="col-2 offset-1" style="display:inline-block;">Пол:</p>
+                            <div class="form-check col-4" style="display:inline-block;">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input registation-radio" name="optionsRadios" id="optionsRadios1" value="1" checked>
+                                    Мужской
+                                </label>
+                            </div>
+                            <div class="form-check col-4" style="display:inline-block;">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input registation-radio" name="optionsRadios" id="optionsRadios2" value="2">
+                                    Женский
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="w-100" style="display:inline-block; margin-top: 25px;">
+                            <p class="col-2" style="display:inline-block;">Статус:</p>
+                            <input type="text" style="display:inline-block;  max-width: 82%" class="col-10 form-control" placeholder="" name="testSomeText1" id="Status">
+                        </div>
+
+                        <div class="w-100" style="display:inline-block; margin-top: 25px;">
+                            <p class="col-2" style="display:inline-block; top: -35px;">О себе:</p>
+                            <textarea style="display:inline-block;" class="col-8 form-control" placeholder="" name="testSomeText2" id="AboutYourself"></textarea>
+                            <input type="submit" id="RegistrationServer" class="col-2 btn btn-info" style="display:inline-block;  max-width: 14.7%; margin-top: -35px;" value="Готово!" name="FinishRegistration">
+                        </div>
+                    </div>
+                </form>
+
+                <!--</form>-->
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-3 background" style="padding-top: 50px; border-radius: 3px">
+        <div class="w-100">
+
+            @using (Ajax.BeginForm("LogIn", "RegistrationAndLogin", new AjaxOptions { HttpMethod = "Post", OnFailure = "OnFailureLog", OnSuccess = "OnSuccessLog" }, new { @id = "formIn", @class = "col-10 offset-1" }))
+    {
+        <form id="formIn">
+        <h6 style="margin-bottom: 20px;">Войти в Network</h6>
+        <input type="text" id="LoginField" class="form-control" placeholder="Enter login" style="margin-bottom: 10px;" name="LoginField">
+        <input type="password" id="PasswordField" class="form-control" placeholder="Password" name="PasswordField">
+        <input type="submit" name="LogIn" id="LogIn" class="btn btn-info float-right col-5" value="Войти" style="margin-top: 10px;">
+        </form>
+}
+            @*<form id="formIn" class="col-10 offset-1" method="post" action="#">
+            <h6 style="margin-bottom: 20px;">Войти в Network</h6>
+            <input type="text" name="LoginField" id="LoginField" class="form-control" placeholder="Enter login" style="margin-bottom: 10px;">
+            <input type="password" name="PasswordField" id="PasswordField" class="form-control" placeholder="Password">
+            <input type="submit" name="LogIn" id="LogIn" class="btn btn-info float-right col-5" value="Войти" style="margin-top: 10px;">
+        </form>*@
+        </div>
+        <a class="text-secondary col-10 offset-1 w-100" style="font-size: 0.85em; margin-top: 5px;" href="#">Забыли пароль?</a>
+        <div class="w-100" style="margin-top: 17%; margin-bottom: 30%">
+            <div class="col-10 offset-1">
+                <h6 style="margin-bottom: 20px;">Впервые в Network? Зарегистрируйся и вперед к важным делам!</h6>
+                <input type="submit" id="registation" name="Reg" class="btn btn-secondary float-right col-5" value="Регистрация">
+            </div>
+        </div>
+    </div>
+</section>
+

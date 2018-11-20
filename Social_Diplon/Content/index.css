@@ -1,0 +1,184 @@
+/*#164d52 dark, #6bc8b6*/
+body {
+    background: url("../Images/default/bg1.png") no-repeat center top / cover;
+}
+
+header {
+    padding: 0;
+}
+
+.header_nav {
+    height: 3.8em;
+}
+
+.btn_menu {
+    height: 45px;
+    border: 0;
+}
+
+    .btn_menu a {
+        margin-top: 2%;
+        font-size: 0.85em;
+    }
+
+.avatar {
+    height: 300px;
+}
+
+.avatar_photo {
+    background: url("../Images/default/avatar.jpg") no-repeat center top / cover;
+}
+
+.info p {
+    font-size: 0.75em;
+    margin-bottom: 5px;
+}
+
+.border-shadow {
+    box-shadow: 0 0 0 0.05rem #c7cbcc
+}
+
+.post * {
+    margin: 10px 10px 10px 10px;
+}
+
+.link:hover {
+    text-decoration: none;
+}
+
+.background {
+    background-color: #e8eeee;
+}
+
+.error {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 0;
+    display: inline-block;
+    float: right;
+}
+
+.errorpas {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 0;
+    display: inline-block;
+    float: right;
+}
+
+.message-hr {
+    margin-top: 0;
+    margin-bottom: 0
+}
+
+.plus {
+    margin-top: 10px;
+    margin-bottom: 3px;
+    display: inline-block;
+    background: url("../plus.png") no-repeat center top / cover;
+    height: 20px;
+}
+
+.test-text {
+    margin-top: 20%;
+}
+
+.test-h6 {
+    padding-bottom: 10px
+}
+
+.test-radio {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.h-a {
+    color: inherit
+}
+
+.send-message-friend {
+    font-size: 0.85em;
+}
+
+.padding-none {
+    padding: 0 0 0 0;
+}
+
+.margin-bottom-none {
+    margin-bottom: 0;
+}
+
+.date-time {
+    font-size: 0.65em;
+    color: #708090;
+}
+
+.friendBox {
+    overflow-y: scroll;
+    height: 360px;
+}
+
+    .friendBox::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    .friendBox::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background: rgba(0,0,0,.1);
+    }
+
+.messageBox {
+    background: white;
+    height: 360px;
+    overflow-y: scroll;
+}
+
+    .messageBox::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    .messageBox::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background: rgba(0,0,0,.1);
+    }
+
+.message-my {
+    float: right;
+}
+
+.message-his {
+    float: left;
+}
+
+.message-my-color {
+    background-color: #EBFAFF;
+    border-radius: 5px;
+}
+
+.message-his-color {
+    background-color: #C6EAEB;
+    border-radius: 5px;
+}
+
+.friend-list {
+    color: black;
+    background-color: #e8eeee;
+    border-color: #e8eeee;
+}
+
+    .friend-list:hover {
+        color: black;
+        background-color: #C9D9D9;
+        border-color: #C9D9D9;
+    }
+
+.padding-none-mt-none {
+    padding: 0;
+    margin-top:0;
+}
+
+.padding-15 {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+}
